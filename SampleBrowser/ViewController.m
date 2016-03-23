@@ -49,6 +49,7 @@
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
+    self.urlTextField.text = urlString;
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView {
