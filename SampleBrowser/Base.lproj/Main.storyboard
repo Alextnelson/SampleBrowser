@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +18,141 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaS-wU-Y2x">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Tx2-fQ-hre"/>
+                                </connections>
+                            </webView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ndl-IW-IXh">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="xKp-pt-QzE">
+                                        <variation key="widthClass=compact" constant="259"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="30" id="xbW-qJ-cuI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="xKp-pt-QzE"/>
+                                        <exclude reference="xbW-qJ-cuI"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="xKp-pt-QzE"/>
+                                        <include reference="xbW-qJ-cuI"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="u3J-2u-8xW"/>
+                                </connections>
+                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eDd-dR-pci">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMT-cd-Hwm">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="1lZ-G9-8it"/>
+                                    <constraint firstAttribute="width" constant="400" id="AOl-IW-CSF"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1lZ-G9-8it"/>
+                                        <exclude reference="AOl-IW-CSF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1lZ-G9-8it"/>
+                                        <include reference="AOl-IW-CSF"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ndl-IW-IXh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Rg-0h-C94"/>
+                            <constraint firstItem="DMT-cd-Hwm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8MI-3M-AwR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RaS-wU-Y2x" secondAttribute="trailing" constant="-20" id="F5H-Qa-6gi"/>
+                            <constraint firstItem="RaS-wU-Y2x" firstAttribute="top" secondItem="Ndl-IW-IXh" secondAttribute="bottom" constant="-58" id="HmD-dw-out"/>
+                            <constraint firstItem="RaS-wU-Y2x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Szh-HX-L5W"/>
+                            <constraint firstItem="DMT-cd-Hwm" firstAttribute="leading" secondItem="RaS-wU-Y2x" secondAttribute="leading" id="XcC-mH-phY"/>
+                            <constraint firstItem="eDd-dR-pci" firstAttribute="leading" secondItem="Ndl-IW-IXh" secondAttribute="trailing" constant="-27" id="Zxm-hx-oDe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RaS-wU-Y2x" secondAttribute="bottom" id="aKY-zm-ZQg">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="DMT-cd-Hwm" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="j1m-Lq-1vs"/>
+                            <constraint firstItem="eDd-dR-pci" firstAttribute="top" secondItem="Ndl-IW-IXh" secondAttribute="bottom" constant="-25" id="l9k-cx-dMZ"/>
+                            <constraint firstItem="DMT-cd-Hwm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p2w-i3-Xj1"/>
+                            <constraint firstItem="DMT-cd-Hwm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w5u-Lz-aG0">
+                                <variation key="widthClass=compact" constant="262.5"/>
+                            </constraint>
+                            <constraint firstItem="RaS-wU-Y2x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="y46-VT-6Ov"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="RaS-wU-Y2x"/>
+                                <exclude reference="Ndl-IW-IXh"/>
+                                <exclude reference="eDd-dR-pci"/>
+                                <exclude reference="DMT-cd-Hwm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="F5H-Qa-6gi"/>
+                                <exclude reference="HmD-dw-out"/>
+                                <exclude reference="Szh-HX-L5W"/>
+                                <exclude reference="y46-VT-6Ov"/>
+                                <exclude reference="0Rg-0h-C94"/>
+                                <exclude reference="Zxm-hx-oDe"/>
+                                <exclude reference="l9k-cx-dMZ"/>
+                                <exclude reference="8MI-3M-AwR"/>
+                                <exclude reference="XcC-mH-phY"/>
+                                <exclude reference="j1m-Lq-1vs"/>
+                                <exclude reference="p2w-i3-Xj1"/>
+                                <exclude reference="w5u-Lz-aG0"/>
+                                <exclude reference="aKY-zm-ZQg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="RaS-wU-Y2x"/>
+                                <include reference="Ndl-IW-IXh"/>
+                                <include reference="eDd-dR-pci"/>
+                                <include reference="DMT-cd-Hwm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="F5H-Qa-6gi"/>
+                                <include reference="HmD-dw-out"/>
+                                <include reference="Szh-HX-L5W"/>
+                                <include reference="y46-VT-6Ov"/>
+                                <include reference="0Rg-0h-C94"/>
+                                <include reference="Zxm-hx-oDe"/>
+                                <include reference="l9k-cx-dMZ"/>
+                                <include reference="8MI-3M-AwR"/>
+                                <include reference="XcC-mH-phY"/>
+                                <include reference="j1m-Lq-1vs"/>
+                                <include reference="p2w-i3-Xj1"/>
+                                <include reference="w5u-Lz-aG0"/>
+                                <include reference="aKY-zm-ZQg"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="networkActivityIndicator" destination="eDd-dR-pci" id="vJo-OQ-UQl"/>
+                        <outlet property="urlTextField" destination="Ndl-IW-IXh" id="lzT-av-Qw6"/>
+                        <outlet property="webView" destination="RaS-wU-Y2x" id="sQC-l0-jFm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304.5" y="429"/>
         </scene>
     </scenes>
 </document>

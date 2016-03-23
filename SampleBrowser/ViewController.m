@@ -8,7 +8,13 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *networkActivityIndicator;
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+
 
 @end
 
@@ -16,12 +22,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.urlTextField.text = @"http://www.espn.go.com";
+    [self goToURL:self.urlTextField.text];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self goToURL:self.urlTextField.text];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)goToURL:(NSString *)urlString {
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView {
+    [self.networkActivityIndicator startAnimating];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self.networkActivityIndicator stopAnimating];
 }
 
 @end
